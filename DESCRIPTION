@@ -1,0 +1,33 @@
+Package: disasteRs
+Title: disasteRs (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Mia", "Tran",email = "mtran18@smith.edu", role = c("aut", "cre")),
+    person("Chi","Mai",email = "nmai@smith.edu", role = c("aut")),
+    person("Alua", "Birgebayeva",email = "abirgebayeva@smith.edu", role =c("aut"))
+  )
+Description: disasteRs is an R package designed to help users explore patterns and trends of natural disasters around the world. Whether you're a researcher, a student, or simply curious about global disaster trends, this package provides an intuitive way to visualize and analyze natural disasters' frequency, timing, and impact.
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Depends: 
+    R (>= 2.10)
+LazyData: true
+Imports:
+    rnaturalearth,
+    dplyr,
+    ggplot2,
+    sf,
+    tidyr,
+    scales
+Suggests:
+    testthat,
+    rnaturalearthdata,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+URL: https://sds270-f24.github.io/disasteRs/
+    rnaturalearthdata,
+    rnaturalearth,
+    knitr

@@ -1,0 +1,73 @@
+---
+title: "disasteRs"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+    df_print: default
+    number_sections: no
+vignette: >
+  %\VignetteIndexEntry{disasteRs}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(disasteRs)
+```
+
+## Summary
+
+Our package includes data from the International Disaster Database data acquired from the [EM-DAT](https://www.emdat.be/). The users can import the occurrence and impacts of over 26,000 mass disasters worldwide from 1900 to the present day for data analysis. \
+
+The package includes three primary functions:
+
+### 1. **`plot_disaster_map_world()`** and **`plot_disaster_map_sea()`**
+
+- **Purpose:** Displays the frequency of natural disasters on a world or Southeast Asia map.
+- **Output:** Choropleth maps where darker regions indicate higher frequencies of disasters.
+- **Use Case:** Ideal for identifying which regions are most prone to disasters.
+
+### 2. **`disaster_month()`**
+
+- **Purpose:** Summarizes and visualizes the months with the most frequent disaster occurrences in a specified region or country.
+- **Output:** Bar plots and summaries of the number of disasters starting in each month.
+- **Use Case:** Helps analyze seasonal trends in disaster occurrences.
+
+### 3. **`analyze_disasters()`**
+
+- **Purpose:** Summarizes and visualizes the human impacts (e.g., deaths, injuries, affected populations) of a specific disaster type for a given year.
+- **Output:** Bar graphs, tables, or both, breaking down disaster impacts.
+- **Use Case:** Assesses the human cost of specific disasters.
+
+## Data Sets Included
+
+- `emdat_world`: the occurrence and impacts of over 16,000 mass disasters worldwide from 2000 to 2024
+
+## Basic Usage
+
+```{r, message=FALSE, warning=FALSE}
+library(disasteRs)
+```
+
+### Data Wrangling
+
+- Using the built-in dataset 'disaster_data'emdat_world' included in the package, the user can easily analyze the most frequent disaster types worldwide for a given year:
+
+```{r example, message=FALSE, warning=FALSE}
+library(dplyr)
+
+most_frequent_disasters <- emdat_world |>
+  filter(start_year == 2023) |>
+  group_by(disaster_type) |>
+  summarize(count = n()) |>
+  arrange(desc(count))
+
+head(most_frequent_disasters)
+```
